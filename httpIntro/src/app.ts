@@ -22,6 +22,13 @@ import {PeopleService} from './peopleService'
 })
 export class App {
   constructor(peopleService:PeopleService) {
-    this.people = peopleService.people;
+    //this.people = peopleService.people;
+
+    peopleService.people
+        .subscribe(
+          people => this.people = people,
+          console.error,
+          () => console.log('Completed!')
+    );
   }
 }
