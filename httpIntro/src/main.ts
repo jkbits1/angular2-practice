@@ -1,27 +1,6 @@
-/**
- * Created by Jon on 27/11/15.
- */
+//main entry point
+import {bootstrap, provide} from 'angular2/angular2';
+import {App} from './app';
 
-//our root app component
-import {Component, View} from 'angular2/angular2'
-import {PeopleService} from './peopleService'
-
-@Component({
-    selector: 'my-app',
-    providers: [PeopleService]
-    template: `
-<div>
-    <h2>Hello Angular2!</h2>
-<ul>
-    <li *ng-for="#person of people">
-{{person.name}}
-</li>
-</ul>
-</div>
-`
-})
-export class App {
-    constructor(peopleService:PeopleService) {
-        this.people = peopleService.people;
-    }
-}
+bootstrap(App)
+    .catch(err => console.error(err));
