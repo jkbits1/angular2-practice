@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="ang-rxjs">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>ang js rxjs</title>
+  <script>document.write('<base href="' + document.location + '" />');</script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.4.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" data-semver="1.4.5"></script>
+  <script data-require="rxjs@*" data-semver="2.5.3" src="//cdnjs.cloudflare.com/ajax/libs/rxjs/2.5.3/rx.all.js"></script>
+  <script data-require="rx.angular.js@*" data-semver="0.0.14" src="https://cdn.rawgit.com/Reactive-Extensions/rx.angular.js/v0.0.14/dist/rx.angular.js"></script>
+  <script src="app.js"></script>
+  <script src="angRxjs.js"></script>
+</head>
+  <body ng-controller="MainCtrl">
+    <button ng-click="click()" ng-disabled="!buttonEnabled">Start</button>
+    <span>{{counter}}</span>
+  </body>
+</html>
