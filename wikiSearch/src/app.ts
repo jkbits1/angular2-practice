@@ -5,9 +5,11 @@
 //our root app component
 import {Component, FORM_DIRECTIVES, CORE_DIRECTIVES, Observable, EventEmitter} from 'angular2/angular2';
 import {Http, URLSearchParams} from 'angular2/http';
+import {JSONP_PROVIDERS, Jsonp} from 'angular2/http';
 
 @Component({
-    selector: 'my-app'
+    selector: 'my-app',
+    providers: [JSONP_PROVIDERS],
     template: `
 <div>
     Wikipedia Search
@@ -23,7 +25,7 @@ directives: [CORE_DIRECTIVES, FORM_DIRECTIVES]
 export class App {
     searches: EventEmitter = new EventEmitter();
 
-    constructor(http:Http) {
+    constructor(http:Http, jsonp:Jsonp) {
         this.searches._subject
             .debounceTime(500)
             .distinctUntilChanged()
@@ -34,16 +36,22 @@ export class App {
                 params.append('search', encodeURI(term));
                 params.append('format', 'json');
 
-                //return jsonp.request("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {search: params})
-                return http.get("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {search: params})
-                    .map(res => res.json());
+                return jsonp.request("http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK", {search: params})
+                //return http.get("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {search: params})
+                    .map(res => {
+                        return res.json()
+                    });
             })
             .subscribe((term) => {
                 console.log('Searching term: ' + term);
             },
-                error => console.error('Error loading Wikipedia article.'),
-            () => console.log('Completed!')
-        );
+                error => {
+                    console.error('Error loading Wikipedia article.')
+                },
+                () => {
+                    console.log('Completed!')
+                }
+            );
     }
 
     keyup($event){
