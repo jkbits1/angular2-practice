@@ -6,9 +6,12 @@
   <title>AngularJS Plunker</title>
   <script>document.write('<base href="' + document.location + '" />');</script>
   <link rel="stylesheet" href="style.css" />
-  <script data-require="angular.js@1.4.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" data-semver="1.4.5"></script>
-  <script data-require="rxjs@*" data-semver="2.5.3" src="//cdnjs.cloudflare.com/ajax/libs/rxjs/2.5.3/rx.all.js"></script>
-  <script data-require="rx.angular.js@*" data-semver="0.0.14" src="https://cdn.rawgit.com/Reactive-Extensions/rx.angular.js/v0.0.14/dist/rx.angular.js"></script>
+  <script data-require="angular.js@1.4.x" data-semver="1.4.5"
+          src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script data-require="rxjs@*" data-semver="2.5.3"
+          src="//cdnjs.cloudflare.com/ajax/libs/rxjs/2.5.3/rx.all.js"></script>
+  <script data-require="rx.angular.js@*" data-semver="0.0.14"
+          src="https://cdn.rawgit.com/Reactive-Extensions/rx.angular.js/v0.0.14/dist/rx.angular.js"></script>
   <script src="app.js"></script>
 </head>
 
@@ -17,7 +20,9 @@
   Wikipedia Search
   <input type="text" ng-model="search" />
   <ul>
-    <li ng-repeat="result in results"><a href="{{result.url}}">{{result.title}}</a></li>
+    <li ng-repeat="result in results">
+      <a href="{{result.url}}">{{result.title}}</a>
+    </li>
   </ul>
 </div>
 </body>
