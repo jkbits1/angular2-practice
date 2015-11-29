@@ -25,13 +25,6 @@ app.controller('MainCtrl', function($scope, rx, $http, observeOnScope) {
           url: result.data[3][idx]
         }
       });
-
-      //for(var i=0, ii = result.data[1].length; i<ii; i+=1){
-      //  $scope.results.push({
-      //    title: result.data[1][i],
-      //    url: result.data[3][i]
-      //  });
-      //}
     })
     .subscribe();
 
