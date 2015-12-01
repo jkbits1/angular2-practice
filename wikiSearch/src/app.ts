@@ -44,6 +44,12 @@ export class App {
             })
             .subscribe((term) => {
                 console.log('Searching term: ' + term);
+                this.results = term[1].map((val, idx) => {
+                    return {
+                        title: val,
+                        url: term[3][idx]
+                    }
+                });
             },
                 error => {
                     console.error('Error loading Wikipedia article.')
