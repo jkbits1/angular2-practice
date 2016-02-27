@@ -12,13 +12,26 @@
     <script src="Actions.js"></script>
     <script src="CatalogActions.js"></script>
     <script src="CatalogStore.js"></script>
+    <script src="CartActions.js"></script>
+    <script src="CartStore.js"></script>
   </head>
 
-  <body ng-controller="MainCtrl">
+  <body ng-controller="MainCtrl as mc">
     <h1>Catalog</h1>
-    <div ng-repeat="item in catalogItems">
+    <div ng-repeat="item in mc.catalogItems">
       <span>{{item.title}}</span>
       <span>{{item.cost | currency:'£':0}}</span>
+      <button ng-click="mc.addItem(item)">Add to Cart</button>
+    </div>
+    <h1>Shopping Cart</h1>
+    <div ng-repeat="item in mc.cartItems">
+      <span>{{item.data.title}}</span>
+      <span>{{item.qty}}</span>
+      <span>{{item.qty*item.data.cost}}</span>
+      <button ng-click="mc.removeItem(item)">x</button>
+    </div>
+    <div ng-if="mc.total">
+      Total: {{mc.total}}
     </div>
   </body>
 </html>
