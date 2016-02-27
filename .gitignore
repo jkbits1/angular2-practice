@@ -5,4 +5,6 @@ wikiSearch/src/*.js
 wikiSearch/src/*.js.map
 .idea/compiler.xml
 .idea/*.*
-flux-basics/index.html
+.idea/copyright/*.*
+ang2-redux/src/*.js
+ang2-redux/src/*.js.map
